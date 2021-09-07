@@ -1,4 +1,5 @@
 import React from "react";
+import Origam from "../origam";
 import styles from './index.module.css'
 
 
@@ -13,8 +14,8 @@ class Origamis extends React.Component {
     }
 
     getOrigamis = async () => {
-       let orArray = [];
-       
+        let orArray = [];
+
         const promise = await fetch('https://origami-a9d80-default-rtdb.firebaseio.com/origami/.json');
         const origamis = await promise.json();
 
@@ -32,9 +33,7 @@ class Origamis extends React.Component {
 
         return (origamis.map(origam => {
             return (
-                <div>
-                    {origam.description}
-                </div>
+               <Origam key={origam.id} {...origam}/>
             )
         })
         )
@@ -48,7 +47,7 @@ class Origamis extends React.Component {
         return (
             <div className={styles.container}>
                 <h1 className={styles.title}>Origami</h1>
-                <div>
+                <div className={styles["origamis-wrapper"]}>
                     {this.renderOrigamis()}
                 </div>
             </div>
