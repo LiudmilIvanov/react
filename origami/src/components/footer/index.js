@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import Link from "../link";
 import styles from './index.module.css'
 import getNavigation from "../utils/navigation";
@@ -10,7 +10,7 @@ const Footer = () => {
             <div>
                 {links.map(nav => {
                     return (
-                        <Link href={nav.link} title={nav.title} type="header" />
+                        <Link key={nav.title} href={nav.link} title={nav.title} type="header" />
                     )
                 })}
             </div>
