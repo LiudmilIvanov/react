@@ -1,15 +1,16 @@
-import styles from './app.module.css'
+import React from 'react';
+import PageLayout from '../components/page-wrapper';
+import Title from '../components/title';
 import Origamis from '../components/origamis';
-import PageWrapper from '../components/page-wrapper';
 
 const HomePage = () => {
+
   return (
-    <div className={styles.app}>
-      <PageWrapper>
-        <Origamis />
-      </PageWrapper>
-    </div>
-  );
+    <PageLayout>
+      <Title title="Publications" />
+      <Origamis />
+    </PageLayout>
+  )
 }
 
 export default HomePage;

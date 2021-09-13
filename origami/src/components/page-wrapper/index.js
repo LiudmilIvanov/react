@@ -3,17 +3,19 @@ import Aside from '../aside'
 import Footer from '../footer'
 import Header from '../header'
 
-const PageWrapper = (props) => {
+const PageLayout = (props) => {
     return (
         <div className={styles.app}>
             <Header />
             <div className={styles.container}>
                 <Aside />
-                {props.children}
+                <div className={styles['inner-container']}>
+                    {props.children}
+                </div>
             </div>
             <Footer />
         </div>
     );
 }
 
-export default PageWrapper;
+export default PageLayout;

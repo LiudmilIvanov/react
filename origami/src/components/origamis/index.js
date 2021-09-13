@@ -1,7 +1,6 @@
-import React from "react";
-import Origam from "../origam";
+import React from 'react';
 import styles from './index.module.css'
-
+import Origam from "../origam";
 
 class Origamis extends React.Component {
 
@@ -33,7 +32,7 @@ class Origamis extends React.Component {
 
         return (origamis.map((origam, index) => {
             return (
-               <Origam key={origam.id} index={index} {...origam}/>
+                <Origam key={origam.id} index={index} {...origam} />
             )
         })
         )
@@ -45,11 +44,8 @@ class Origamis extends React.Component {
 
     render() {
         return (
-            <div className={styles.container}>
-                <h1 className={styles.title}>Origami</h1>
-                <div className={styles["origamis-wrapper"]}>
-                    {this.renderOrigamis()}
-                </div>
+            <div className={styles["origamis-wrapper"]}>
+                {this.renderOrigamis()}
             </div>
         )
     }
