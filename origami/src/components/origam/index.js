@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import styles from './index.module.css'
 import image from '../../images/blue-origami-bird.png'
 
