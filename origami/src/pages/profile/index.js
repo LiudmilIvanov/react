@@ -32,7 +32,7 @@ class ProfilePage extends React.Component {
     }
 
     render() {
-        const { username, posts } = this.state
+        const { username } = this.state
 
         if (!username) {
             return (
