@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "./Context";
 
 class App extends React.Component {
     constructor(props) {
@@ -24,14 +25,19 @@ class App extends React.Component {
         })
     }
 
-    // changeLoggedIn = () => {
-    //     this.setState({
-    //         loggedIn: !this.state.loggedIn
-    //     })
-    // }
-
     render() {
-        return this.props.children
+        const { loggedIn, user } = this.state
+        return (
+            <UserContext.Provider value={{
+                loggedIn,
+                user,
+                logIn: this.logIn,
+                logOut: this.logOut
+            }}>
+                {this.props.children}
+            </UserContext.Provider>
+        )
+
     }
 }
 
