@@ -42,8 +42,9 @@ class RegisterPage extends React.Component {
             email,
             password
         }, (user) => {
-            this.context.logIn(user)
+            console.log('success')
             this.props.history.push('/')
+            this.context.loggIn(user)
 
         }, (e) => {
             console.log('Error', e)
