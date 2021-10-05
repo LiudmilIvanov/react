@@ -4,6 +4,7 @@ import styles from './index.module.css'
 import Title from "../../components/title";
 import PageLayout from "../../components/page-wrapper";
 import Input from "../../components/input";
+import authenticate from "../../components/utils/authenticate";
 
 const loginURl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDszcBNUd82gxv2s38wqcMK3BfOcAcC2Uk`
 
@@ -24,31 +25,20 @@ class LoginPage extends React.Component {
         this.setState(newState)
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         const { email, password } = this.state;
 
-        fetch(loginURl, {
-            method: 'POST',
-            body: JSON.stringify({
-                email,
-                password
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }).then(promise => {
-            return promise.json()
-        }).then(data => {
-            const authToken = data.idToken
-            document.cookie = `x-auth-token=${authToken}`
+        await authenticate(loginURl, {
+            email,
+            password
+        }, () => {
+            console.log('success')
+            this.props.history.push('/')
 
-            if (email && data.idToken) {
-                this.props.history.push('/')
-            }
-        }).catch(e => this.props.history.push('/error'))
-
-
+        }, (e) => {
+            console.log('Error', e)
+        })
     }
 
     render() {
