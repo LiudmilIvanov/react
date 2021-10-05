@@ -44,7 +44,7 @@ class RegisterPage extends React.Component {
         }, (user) => {
             console.log('success')
             this.props.history.push('/')
-            this.context.loggIn(user)
+            this.context.logIn(user)
 
         }, (e) => {
             console.log('Error', e)

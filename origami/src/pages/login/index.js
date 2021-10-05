@@ -37,8 +37,8 @@ class LoginPage extends React.Component {
             password
         }, (user) => {
             console.log('yes')
+            this.context.logIn(user)
             this.props.history.push('/')
-            this.context.loggIn(user)
 
         }, (e) => {
             console.log('Error', e)
