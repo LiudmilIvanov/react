@@ -5,6 +5,7 @@ import styles from './index.module.css'
 import PageLayout from "../../components/page-wrapper";
 import Input from "../../components/input";
 import authenticate from "../../components/utils/authenticate";
+import UserContext from "../../Context";
 
 const registerUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDszcBNUd82gxv2s38wqcMK3BfOcAcC2Uk`;
 
@@ -18,6 +19,9 @@ class RegisterPage extends React.Component {
             rePassword: "",
         }
     }
+
+    static contextType = UserContext
+
 
     onChange = (event, type) => {
         const newState = {}
@@ -37,8 +41,8 @@ class RegisterPage extends React.Component {
         await authenticate(registerUrl, {
             email,
             password
-        }, () => {
-            console.log('success')
+        }, (user) => {
+            this.context.logIn(user)
             this.props.history.push('/')
 
         }, (e) => {
