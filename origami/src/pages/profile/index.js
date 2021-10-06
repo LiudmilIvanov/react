@@ -35,6 +35,7 @@ class ProfilePage extends React.Component {
     }
 
     logOut = () => {
+        document.cookie = 'x-auth-token='
         this.context.logOut()
         this.props.history.push('/')
     }

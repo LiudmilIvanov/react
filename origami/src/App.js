@@ -6,7 +6,7 @@ class App extends React.Component {
         super(props)
 
         this.state = {
-            loggedIn: false,
+            loggedIn: null,
             user: null
         }
     }
@@ -27,6 +27,13 @@ class App extends React.Component {
 
     render() {
         const { loggedIn, user } = this.state
+
+        if (loggedIn === null) {
+            return (
+                <div>Loading...</div>
+            )
+        }
+
         return (
             <UserContext.Provider value={{
                 loggedIn,
