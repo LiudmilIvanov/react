@@ -27,13 +27,7 @@ class App extends React.Component {
 
     render() {
         const { loggedIn, user } = this.state
-
-        if (loggedIn === null) {
-            return (
-                <div>Loading...</div>
-            )
-        }
-
+    
         return (
             <UserContext.Provider value={{
                 loggedIn,
