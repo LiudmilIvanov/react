@@ -1,45 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import UserContext from "./Context";
 
-class App extends React.Component {
-    constructor(props) {
-        super(props)
+const App = (props) => {
+    const [user, setUser] = useState(null)
+    // const [loggedIn, setLoggedIn] = useState(null)
 
-        this.state = {
-            loggedIn: null,
-            user: null
-        }
-    }
-
-    logIn = (user) => {
-        this.setState({
-            loggedIn: true,
-            user
+    const logIn = (user) => {
+        setUser({
+            ...user,
+            loggedIn: true
         })
     }
 
-    logOut = () => {
-        this.setState({
-            loggedIn: false,
-            user: null
+    const logOut = () => {
+        setUser({
+            loggedIn: false
         })
     }
 
-    render() {
-        const { loggedIn, user } = this.state
-    
-        return (
-            <UserContext.Provider value={{
-                loggedIn,
-                user,
-                logIn: this.logIn,
-                logOut: this.logOut
-            }}>
-                {this.props.children}
-            </UserContext.Provider>
-        )
-
-    }
+    return (
+        <UserContext.Provider value={{
+            user,
+            logIn: logIn,
+            logOut: logOut
+        }}>
+            {props.children}
+        </UserContext.Provider>
+    )
 }
+
+// class App extends React.Component {
+//     constructor(props) {
+//         super(props)
+
+//         this.state = {
+//             loggedIn: null,
+//             user: null
+//         }
+//     }
+
+//     logIn = (user) => {
+//         this.setState({
+//             loggedIn: true,
+//             user
+//         })
+//     }
+
+//     logOut = () => {
+//         this.setState({
+//             loggedIn: false,
+//             user: null
+//         })
+//     }
+
+//     render() {
+//         const { loggedIn, user } = this.state
+
+//         return (
+//             <UserContext.Provider value={{
+//                 loggedIn,
+//                 user,
+//                 logIn: this.logIn,
+//                 logOut: this.logOut
+//             }}>
+//                 {this.props.children}
+//             </UserContext.Provider>
+//         )
+
+//     }
+// }
 
 export default App
